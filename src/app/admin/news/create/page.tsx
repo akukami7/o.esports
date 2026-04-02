@@ -28,9 +28,9 @@ export default async function CreateNewsPage() {
 
     const newNews = await prisma.news.create({
       data: {
-        title,
+        title_ru: title,
         slug,
-        content,
+        content_ru: content,
         imageUrl: imageUrl || null,
         categoryId,
         authorId: "Admin", // Mock auth
