@@ -1,5 +1,6 @@
 import "./globals.css"
 import { Inter } from "next/font/google"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -12,6 +13,7 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-background antialiased selection:bg-foreground selection:text-background`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
