@@ -6,7 +6,7 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
 
 export const updateSession = async (request: NextRequest, response: NextResponse) => {
   // We use the existing response (from next-intl) instead of creating a new one
-  let supabaseResponse = response;
+  const supabaseResponse = response;
 
   const supabase = createServerClient(
     supabaseUrl!,

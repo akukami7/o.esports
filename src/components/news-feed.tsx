@@ -6,6 +6,7 @@ import Image from "next/image"
 import { format } from "date-fns"
 import { Eye, Radio, ChevronUp } from "lucide-react"
 import { toast } from "sonner"
+import PusherClient from "pusher-js"
 import { AdSense } from "@/components/adsense"
 import { BannerAd } from "@/components/banner-ad"
 import { useTranslations } from "next-intl"
@@ -38,7 +39,6 @@ type RawNewsItem = {
 // ─── Constants ──────────────────────────────────────────────────────
 const POLL_INTERVAL = 15_000       // 15 seconds
 const LIVE_BADGE_DURATION = 3 * 60_000  // 3 minutes
-const SSE_RECONNECT_DELAY = 5_000
 
 // ─── Helpers ────────────────────────────────────────────────────────
 function localizeItem(item: RawNewsItem, locale: string): LocalizedNewsItem {
@@ -159,8 +159,6 @@ export function NewsFeed({
   useEffect(() => {
     if (typeof window === "undefined") return
 
-    const PusherClient = require("pusher-js").default || require("pusher-js")
-    
     const key = process.env.NEXT_PUBLIC_PUSHER_KEY
     if (!key || key === "your-app-key") {
       console.warn("Pusher key missing, real-time updates disabled")
