@@ -1,0 +1,25 @@
+{
+  "Navbar": {
+    "title": "o.esports",
+    "categories": "Санаттар",
+    "home": "Басты бет"
+  },
+  "NewsFeed": {
+    "latest": "Соңғы жаңалықтар",
+    "subtitle": "Киберспорт әлемінен хабардар болыңыз",
+    "related": "Ұқсас жаңалықтар",
+    "views": "қаралым",
+    "back": "Басты бетке",
+    "empty": "Жаңалықтар әлі жоқ.",
+    "liveConnection": "Тікелей эфир",
+    "connecting": "Қосылуда...",
+    "newArticle": "жаңа мақала",
+    "newArticles": "жаңа мақалалар",
+    "clickToShow": "көрсету үшін басыңыз"
+  },
+  "Admin": {
+    "dashboard": "Басқару панелі",
+    "banners": "Баннерлер",
+    "createNews": "Жаңалық қосу"
+  }
+}

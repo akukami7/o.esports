@@ -1,0 +1,25 @@
+{
+  "Navbar": {
+    "title": "o.esports",
+    "categories": "Categories",
+    "home": "Home"
+  },
+  "NewsFeed": {
+    "latest": "Latest News",
+    "subtitle": "Stay up to date with the esports world",
+    "related": "Related News",
+    "views": "views",
+    "back": "Back to Home",
+    "empty": "No news available yet.",
+    "liveConnection": "Live",
+    "connecting": "Connecting...",
+    "newArticle": "new article",
+    "newArticles": "new articles",
+    "clickToShow": "click to show"
+  },
+  "Admin": {
+    "dashboard": "Dashboard",
+    "banners": "Banner Ads",
+    "createNews": "Create News"
+  }
+}

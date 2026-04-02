@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -27,9 +28,13 @@ model Category {
 
 model News {
   id         String   @id @default(cuid())
-  title      String
+  title_ru   String   @map("title")
+  title_en   String?
+  title_kz   String?
   slug       String   @unique
-  content    String
+  content_ru String   @map("content")
+  content_en String?
+  content_kz String?
   imageUrl   String?
   views      Int      @default(0)
   authorId   String
@@ -38,4 +43,21 @@ model News {
   updatedAt  DateTime @updatedAt
 
   category Category @relation(fields: [categoryId], references: [id])
+
+  @@index([createdAt])
+  @@index([categoryId])
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  name      String
+  imageUrl  String
+  targetUrl String
+  position  String   // 'SIDEBAR', 'IN_ARTICLE', 'FEED'
+  isActive  Boolean  @default(true)
+  clicks    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([position, isActive])
 }
