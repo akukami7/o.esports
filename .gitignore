@@ -42,3 +42,6 @@ next-env.d.ts
 dev.db
 *.log
 *.txt
+
+.vercel
+.env*.local
