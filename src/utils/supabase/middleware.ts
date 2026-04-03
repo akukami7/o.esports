@@ -1,16 +1,20 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
-
 export const updateSession = async (request: NextRequest, response: NextResponse) => {
-  // We use the existing response (from next-intl) instead of creating a new one
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY;
+
+  // Skip Supabase session refresh if env vars are not configured
+  if (!supabaseUrl || !supabaseKey) {
+    return response;
+  }
+
   const supabaseResponse = response;
 
   const supabase = createServerClient(
-    supabaseUrl!,
-    supabaseKey!,
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll() {
@@ -26,7 +30,6 @@ export const updateSession = async (request: NextRequest, response: NextResponse
     },
   );
 
-  // IMPORTANT: You *must* call `getUser` to refresh the session
   await supabase.auth.getUser();
 
   return supabaseResponse;
